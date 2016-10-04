@@ -1,0 +1,28 @@
+/* deppstyle.css - Stylesheet for "Depp Man Walking" matching game. */
+.card {
+    position: relative;
+    display: inline-block;
+    box-sizing: content-box;
+    height: 12vw;
+    width: 7vw;
+    border: 1px solid black;
+    border-radius: 6px;
+    margin: 0;
+}
+
+.card img {
+    position: absolute;
+    width: 96%;
+    border-radius: 3px;
+    top: 3px;
+    left: 3px;
+}
+
+h1 {
+    margin-left: 1em;
+}
+
+#about_program {
+    border: 1em;
+}
+

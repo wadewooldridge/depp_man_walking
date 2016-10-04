@@ -6,11 +6,11 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
-
+    <script src="http://learning-fuze.github.io/memory_match/v0.1/script.js"></script>
+    <link rel="stylesheet" href="deppstyle.css">
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -48,81 +48,87 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-10 panel-group" id="game-area">
+    <div class="col-xs-10 panel-group">
         <div class="panel panel-default">
             <div class="panel-heading">Game Area</div>
-            <div class="panel-body">
-                <div class="card">
-                    <div class="front"><img src="images/sweeney_todd.jpg"></div>
-                    <div class="back"><img src="images/card_back.gif"></div>
+            <div class="panel-body" id="game-area">
+                <div class="row">
+                    <div class="card">
+                        <div class="front"><img src="images/the_wolf.jpg"></div>
+                        <div class="back"><img src="images/card_back.gif"></div>
+                    </div>
+                    <div class="card">
+                        <div class="front"><img src="images/edward_scissorhands.jpg"></div>
+                        <div class="back"><img src="images/card_back.gif"></div>
+                    </div>
+                    <div class="card">
+                        <div class="front"><img src="images/mad_hatter.jpg"></div>
+                        <div class="back"><img src="images/card_back.gif"></div>
+                    </div>
+                    <div class="card">
+                        <div class="front"><img src="images/tonto.jpg"></div>
+                        <div class="back"><img src="images/card_back.gif"></div>
+                    </div>
+                    <div class="card">
+                        <div class="front"><img src="images/21_jump_street.jpg"></div>
+                        <div class="back"><img src="images/card_back.gif"></div>
+                    </div>
+                    <div class="card">
+                        <div class="front"><img src="images/willy_wonka.jpg"></div>
+                        <div class="back"><img src="images/card_back.gif"></div>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="front"><img src="images/sweeney_todd.jpg"></div>
-                    <div class="back"><img src="images/card_back.gif"></div>
+                <div class="row">
+                    <div class="card">
+                        <div class="front"><img src="images/willy_wonka.jpg"></div>
+                        <div class="back"><img src="images/card_back.gif"></div>
+                    </div>
+                    <div class="card">
+                        <div class="front"><img src="images/sweeney_todd.jpg"></div>
+                        <div class="back"><img src="images/card_back.gif"></div>
+                    </div>
+                    <div class="card">
+                        <div class="front"><img src="images/jack_sparrow.jpg"></div>
+                        <div class="back"><img src="images/card_back.gif"></div>
+                    </div>
+                    <div class="card">
+                        <div class="front"><img src="images/21_jump_street.jpg"></div>
+                        <div class="back"><img src="images/card_back.gif"></div>
+                    </div>
+                    <div class="card">
+                        <div class="front"><img src="images/ichabod_crane.jpg"></div>
+                        <div class="back"><img src="images/card_back.gif"></div>
+                    </div>
+                    <div class="card">
+                        <div class="front"><img src="images/edward_scissorhands.jpg"></div>
+                        <div class="back"><img src="images/card_back.gif"></div>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="front"><img src="images/the_wolf.jpg"></div>
-                    <div class="back"><img src="images/card_back.gif"></div>
-                </div>
-                <div class="card">
-                    <div class="front"><img src="images/the_wolf.jpg"></div>
-                    <div class="back"><img src="images/card_back.gif"></div>
-                </div>
-                <div class="card">
-                    <div class="front"><img src="images/edward_scissorhands.jpg"></div>
-                    <div class="back"><img src="images/card_back.gif"></div>
-                </div>
-                <div class="card">
-                    <div class="front"><img src="images/edward_scissorhands.jpg"></div>
-                    <div class="back"><img src="images/card_back.gif"></div>
-                </div>
-                <div class="card">
-                    <div class="front"><img src="images/mad_hatter.jpg"></div>
-                    <div class="back"><img src="images/card_back.gif"></div>
-                </div>
-                <div class="card">
-                    <div class="front"><img src="images/mad_hatter.jpg"></div>
-                    <div class="back"><img src="images/card_back.gif"></div>
-                </div>
-                <div class="card">
-                    <div class="front"><img src="images/jack_sparrow.jpg"></div>
-                    <div class="back"><img src="images/card_back.gif"></div>
-                </div>
-                <div class="card">
-                    <div class="front"><img src="images/jack_sparrow.jpg"></div>
-                    <div class="back"><img src="images/card_back.gif"></div>
-                </div>
-                <div class="card">
-                    <div class="front"><img src="images/21_jump_street.jpg"></div>
-                    <div class="back"><img src="images/card_back.gif"></div>
-                </div>
-                <div class="card">
-                    <div class="front"><img src="images/21_jump_street.jpg"></div>
-                    <div class="back"><img src="images/card_back.gif"></div>
-                </div>
-                <div class="card">
-                    <div class="front"><img src="images/tonto.jpg"></div>
-                    <div class="back"><img src="images/card_back.gif"></div>
-                </div>
-                <div class="card">
-                    <div class="front"><img src="images/tonto.jpg"></div>
-                    <div class="back"><img src="images/card_back.gif"></div>
-                </div>
-                <div class="card">
-                    <div class="front"><img src="images/willy_wonka.jpg"></div>
-                    <div class="back"><img src="images/card_back.gif"></div>
-                </div>
-                <div class="card">
-                    <div class="front"><img src="images/willy_wonka.jpg"></div>
-                    <div class="back"><img src="images/card_back.gif"></div>
-                </div>
-                <div class="card">
-                    <div class="front"><img src="images/ichabod_crane.jpg"></div>
-                    <div class="back"><img src="images/card_back.gif"></div>
-                </div>
-                <div class="card">
-                    <div class="front"><img src="images/ichabod_crane.jpg"></div>
-                    <div class="back"><img src="images/card_back.gif"></div>
+                <div class="row">
+                    <div class="card">
+                        <div class="front"><img src="images/ichabod_crane.jpg"></div>
+                        <div class="back"><img src="images/card_back.gif"></div>
+                    </div>
+                    <div class="card">
+                        <div class="front"><img src="images/sweeney_todd.jpg"></div>
+                        <div class="back"><img src="images/card_back.gif"></div>
+                    </div>
+                    <div class="card">
+                        <div class="front"><img src="images/jack_sparrow.jpg"></div>
+                        <div class="back"><img src="images/card_back.gif"></div>
+                    </div>
+                    <div class="card">
+                        <div class="front"><img src="images/the_wolf.jpg"></div>
+                        <div class="back"><img src="images/card_back.gif"></div>
+                    </div>
+                    <div class="card">
+                        <div class="front"><img src="images/tonto.jpg"></div>
+                        <div class="back"><img src="images/card_back.gif"></div>
+                    </div>
+                    <div class="card">
+                        <div class="front"><img src="images/mad_hatter.jpg"></div>
+                        <div class="back"><img src="images/card_back.gif"></div>
+                    </div>
                 </div>
             </div>
         </div>
