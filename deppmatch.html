@@ -9,6 +9,7 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="deppdata.js"></script>
     <script src="deppscript.js"></script>
     <link rel="stylesheet" href="deppstyle.css">
 </head>
@@ -26,7 +27,7 @@
 </nav>
 
 <div class="row">
-    <div class="col-xs-2 panel-group">
+    <div class="col-xs-3 panel-group">
         <div class="panel panel-default">
             <div class="panel-heading">Stats</div>
             <div class="panel-body">
@@ -55,11 +56,33 @@
                 </div>
             </div>
         </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Screening Room</div>
+            <div class="panel-body">
+                <div id="screening">
+                    Movie goes here.
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-xs-10 panel-group">
+    <div class="col-xs-6 panel-group">
         <div class="panel panel-default">
             <div class="panel-heading">Game Area</div>
             <div class="panel-body" id="game-area">
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3 panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">Trivia Corner</div>
+            <div class="panel-body" id="trivia">
+                <h1>Johnny Depp</h1>
+                <h3>as</h3>
+                <h1 id="trivia-name"></h1>
+                <h3>in</h3>
+                <h1 id="trivia-movie"></h1>
+                <hr>
+                <p id="trivia-basic"></p>
             </div>
         </div>
     </div>

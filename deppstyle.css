@@ -1,4 +1,20 @@
 /* Formatting for the card divs and images. */
+
+/* Basic stying for overall page. */
+body {
+    background-color: #777;
+}
+
+.panel {
+    border: 2px solid black;
+}
+
+.panel > .panel-heading {
+    background-color: black;
+    color: white;
+}
+
+/* Styling for the game area. */
 .card {
     position: relative;
     display: inline-block;
@@ -38,6 +54,10 @@
     animation-duration: 1s;
 }
 
+/* Formatting for the Trivia Corner panel. */
+#trivia h1, #trivia h3 {
+    text-align: center;
+}
 /* Formatting for the deppabout.html page. */
 h1 {
     margin-left: 1em;

@@ -1,57 +1,5 @@
 /* deppscript.js - JavaScript code for "Depp Man Walking" matching game. */
-
-/* Constant values. */
-var ROLE_COUNT = 9;                             // Roles displayed.
-var CARD_COUNT = ROLE_COUNT * 2;                // Cards displayed.
-var ROW_COUNT = 3;                              // Number of rows.
-var CARDS_PER_ROW = CARD_COUNT / ROW_COUNT;     // Cards in each row.
-
-var ROLE_BARNABAS_COLLINS = 0;
-var ROLE_DEAN_CORSO = 1;
-var ROLE_DON_JUAN_DEMARCO = 2;
-var ROLE_DONNIE_BRASCO = 3;
-var ROLE_ED_WOOD = 4;
-var ROLE_EDWARD_SCISSORHANDS = 5;
-var ROLE_GEORGE_JUNG = 6;
-var ROLE_GILBERT_GRAPE = 7;
-var ROLE_ICHABOD_CRANE = 8;
-var ROLE_JACK_SPARROW = 9;
-var ROLE_JOHN_DILLINGER = 10;
-var ROLE_LERNER = 11;
-var ROLE_MORTDECAI = 12;
-var ROLE_RANGO = 13;
-var ROLE_ROUX = 14;
-var ROLE_SWEENEY_TODD = 15;
-var ROLE_THE_MAD_HATTER = 16;
-var ROLE_THE_WOLF = 17;
-var ROLE_TOM_HANSON = 18;
-var ROLE_TONTO = 19;
-var ROLE_WILLY_WONKA = 20;
-
-/* Which images go with which sounds; these indices match the ROLE constants above. */
-var gaRoles = [
-    { name: 'Barnabas Colline',     imageFile: 'images/barnabas_collins.jpg',       soundFile: null },
-    { name: 'Dean Corso',           imageFile: 'images/dean_corso.jpg',             soundFile: null },
-    { name: 'Don Juan DeMarco',     imageFile: 'images/don_juan_demarco.jpg',       soundFile: null },
-    { name: 'Donnie Brasco',        imageFile: 'images/donnie_brasco.jpg',          soundFile: null },
-    { name: 'Ed Wood',              imageFile: 'images/ed_wood.jpg',                soundFile: null },
-    { name: 'Edward Scissorhands',  imageFile: 'images/edward_scissorhands.jpg',    soundFile: 'sounds/edward_scissorhands.wav' },
-    { name: 'George Jung',          imageFile: 'images/george_jung.jpg',            soundFile: null },
-    { name: 'Gilbert Grape',        imageFile: 'images/gilbert_grape.jpg',          soundFile: null },
-    { name: 'Ichabod Crane',        imageFile: 'images/ichabod_crane.jpg',          soundFile: 'sounds/ichabod_crane.mp3' },
-    { name: 'Jack Sparrow',         imageFile: 'images/jack_sparrow.jpg',           soundFile: 'sounds/jack_sparrow.wav' },
-    { name: 'John Dillinger',       imageFile: 'images/john_dillinger.jpg',         soundFile: null },
-    { name: 'Lerner',               imageFile: 'images/lerner.jpg',                 soundFile: null },
-    { name: 'Mortdecai',            imageFile: 'images/mortdecai.jpg',              soundFile: null },
-    { name: 'Rango',                imageFile: 'images/rango.jpg',                  soundFile: null },
-    { name: 'Roux',                 imageFile: 'images/roux.jpg',                   soundFile: null },
-    { name: 'Sweeney Todd',         imageFile: 'images/sweeney_todd.jpg',           soundFile: 'sounds/sweeney_todd.wav' },
-    { name: 'The Mad Hatter',       imageFile: 'images/mad_hatter.jpg',             soundFile: 'sounds/mad_hatter.wav' },
-    { name: 'The Wolf',             imageFile: 'images/the_wolf.jpg',               soundFile: 'sounds/the_wolf.mp3' },
-    { name: 'Tom Hanson',           imageFile: 'images/tom_hanson.jpg',             soundFile: 'sounds/tom_hanson.mp3' },
-    { name: 'Tonto',                imageFile: 'images/tonto.jpg',                  soundFile: 'sounds/tonto.mp3' },
-    { name: 'Willy Wonka',          imageFile: 'images/willy_wonka.jpg',            soundFile: 'sounds/willy_wonka.wav' }
-];
+/* Relies on data in deppdata.js, which should be sourced first. */
 
 /* Global data. */
 var gGameCount = 0;                             // Count total games.
@@ -68,7 +16,7 @@ $(document).ready(function() {
     /* Set up the click handler for the various buttons. */
     $('.reset-game').click(resetGame);
     $('.cheat').click(onCheatButton);
-    $('.test').click(onTestButton).hide();      // Hide for normal distribution.
+    $('.test').click(onTestButton); //.hide();      // Hide for normal distribution.
 
     /* Set up the initial configuration on cards in rows. */
     setUpGameArea();
@@ -80,11 +28,12 @@ $(document).ready(function() {
     resetGame();
 });
 
-/* Display handlers. These get the data from the global variables. */
+/* Display an updated game count. */
 function displayGameCount() {
     $('.games-played .value').text(gGameCount);
 }
 
+/* Display updated statistics. */
 function displayStats() {
     var accuracy;
 
