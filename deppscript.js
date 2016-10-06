@@ -1,29 +1,56 @@
 /* deppscript.js - JavaScript code for "Depp Man Walking" matching game. */
 
 /* Constant values. */
-var CARD_COUNT = 18;
-var CARDS_PER_ROW = 6;
-var CHARACTER_21_JUMP_STREET = 0;
-var CHARACTER_EDWARD_SCISSORHANDS = 1;
-var CHARACTER_ICHABOD_CRANE = 2;
-var CHARACTER_JACK_SPARROW = 3;
-var CHARACTER_MAD_HATTER = 4;
-var CHARACTER_SWEENEY_TODD = 5;
-var CHARACTER_THE_WOLF = 6;
-var CHARACTER_TONTO = 7;
-var CHARACTER_WILLY_WONKA = 8;
+var ROLE_COUNT = 9;                             // Roles displayed.
+var CARD_COUNT = ROLE_COUNT * 2;                // Cards displayed.
+var ROW_COUNT = 3;                              // Number of rows.
+var CARDS_PER_ROW = CARD_COUNT / ROW_COUNT;     // Cards in each row.
 
-/* Which images go with which sounds; these indices match the CHARACTER constants above. */
-var gaCharacters = [
-    { name: 'Tom Hanson',           imageFile:'images/21_jump_street.jpg',       soundFile: 'sounds/21_jump_street.mp3' },
-    { name: 'Edward Scissorhands',  imageFile:'images/edward_scissorhands.jpg',  soundFile: 'sounds/edward_scissorhands.wav' },
-    { name: 'Ichabod Crane',        imageFile:'images/ichabod_crane.jpg',        soundFile: 'sounds/ichabod_crane.mp3' },
-    { name: 'Jack Sparrow',         imageFile:'images/jack_sparrow.jpg',         soundFile: 'sounds/jack_sparrow.wav' },
-    { name: 'The Mad Hatter',       imageFile:'images/mad_hatter.jpg',           soundFile: 'sounds/mad_hatter.wav' },
-    { name: 'Sweeney Todd',         imageFile:'images/sweeney_todd.jpg',         soundFile: 'sounds/sweeney_todd.wav' },
-    { name: 'The Wolf',             imageFile:'images/the_wolf.jpg',             soundFile: 'sounds/the_wolf.mp3' },
-    { name: 'Tonto',                imageFile:'images/tonto.jpg',                soundFile: 'sounds/tonto.mp3' },
-    { name: 'Willy Wonka',          imageFile:'images/willy_wonka.jpg',          soundFile: 'sounds/willy_wonka.wav' }
+var ROLE_BARNABAS_COLLINS = 0;
+var ROLE_DEAN_CORSO = 1;
+var ROLE_DON_JUAN_DEMARCO = 2;
+var ROLE_DONNIE_BRASCO = 3;
+var ROLE_ED_WOOD = 4;
+var ROLE_EDWARD_SCISSORHANDS = 5;
+var ROLE_GEORGE_JUNG = 6;
+var ROLE_GILBERT_GRAPE = 7;
+var ROLE_ICHABOD_CRANE = 8;
+var ROLE_JACK_SPARROW = 9;
+var ROLE_JOHN_DILLINGER = 10;
+var ROLE_LERNER = 11;
+var ROLE_MORTDECAI = 12;
+var ROLE_RANGO = 13;
+var ROLE_ROUX = 14;
+var ROLE_SWEENEY_TODD = 15;
+var ROLE_THE_MAD_HATTER = 16;
+var ROLE_THE_WOLF = 17;
+var ROLE_TOM_HANSON = 18;
+var ROLE_TONTO = 19;
+var ROLE_WILLY_WONKA = 20;
+
+/* Which images go with which sounds; these indices match the ROLE constants above. */
+var gaRoles = [
+    { name: 'Barnabas Colline',     imageFile: 'images/barnabas_collins.jpg',       soundFile: null },
+    { name: 'Dean Corso',           imageFile: 'images/dean_corso.jpg',             soundFile: null },
+    { name: 'Don Juan DeMarco',     imageFile: 'images/don_juan_demarco.jpg',       soundFile: null },
+    { name: 'Donnie Brasco',        imageFile: 'images/donnie_brasco.jpg',          soundFile: null },
+    { name: 'Ed Wood',              imageFile: 'images/ed_wood.jpg',                soundFile: null },
+    { name: 'Edward Scissorhands',  imageFile: 'images/edward_scissorhands.jpg',    soundFile: 'sounds/edward_scissorhands.wav' },
+    { name: 'George Jung',          imageFile: 'images/george_jung.jpg',            soundFile: null },
+    { name: 'Gilbert Grape',        imageFile: 'images/gilbert_grape.jpg',          soundFile: null },
+    { name: 'Ichabod Crane',        imageFile: 'images/ichabod_crane.jpg',          soundFile: 'sounds/ichabod_crane.mp3' },
+    { name: 'Jack Sparrow',         imageFile: 'images/jack_sparrow.jpg',           soundFile: 'sounds/jack_sparrow.wav' },
+    { name: 'John Dillinger',       imageFile: 'images/john_dillinger.jpg',         soundFile: null },
+    { name: 'Lerner',               imageFile: 'images/lerner.jpg',                 soundFile: null },
+    { name: 'Mortdecai',            imageFile: 'images/mortdecai.jpg',              soundFile: null },
+    { name: 'Rango',                imageFile: 'images/rango.jpg',                  soundFile: null },
+    { name: 'Roux',                 imageFile: 'images/roux.jpg',                   soundFile: null },
+    { name: 'Sweeney Todd',         imageFile: 'images/sweeney_todd.jpg',           soundFile: 'sounds/sweeney_todd.wav' },
+    { name: 'The Mad Hatter',       imageFile: 'images/mad_hatter.jpg',             soundFile: 'sounds/mad_hatter.wav' },
+    { name: 'The Wolf',             imageFile: 'images/the_wolf.jpg',               soundFile: 'sounds/the_wolf.mp3' },
+    { name: 'Tom Hanson',           imageFile: 'images/tom_hanson.jpg',             soundFile: 'sounds/tom_hanson.mp3' },
+    { name: 'Tonto',                imageFile: 'images/tonto.jpg',                  soundFile: 'sounds/tonto.mp3' },
+    { name: 'Willy Wonka',          imageFile: 'images/willy_wonka.jpg',            soundFile: 'sounds/willy_wonka.wav' }
 ];
 
 /* Global data. */
@@ -71,12 +98,12 @@ function displayStats() {
     $('.accuracy .value').text(accuracy);
 }
 
-/* Function to look up the character index from the src string. */
-function getCharacterIndexFromImageSrc(srcString) {
-    //console.log('getCharacterIndexFromImageSrc:', srcString);
+/* Function to look up the role index from the src string. */
+function getroleIndexFromImageSrc(srcString) {
+    //console.log('getroleIndexFromImageSrc:', srcString);
 
-    for (var i = 0; i < gaCharacters.length; i++) {
-        if (srcString.search(gaCharacters[i].imageFile) != -1) {
+    for (var i = 0; i < gaRoles.length; i++) {
+        if (srcString.search(gaRoles[i].imageFile) != -1) {
             return i;
         }
     }
@@ -113,10 +140,10 @@ function onCardClick() {
         //console.log('onCard Click compare: ' + firstCardSrc + ' vs. ' + secondCardSrc);
         if (firstCardSrc === secondCardSrc) {
             /* Found a match. */
-            var characterIndex = getCharacterIndexFromImageSrc(firstCardSrc);
-            //console.log('onCardClick found match for', gaCharacters[characterIndex].name);
-            playSound(characterIndex);
-            performAnimation(characterIndex);
+            var roleIndex = getroleIndexFromImageSrc(firstCardSrc);
+            //console.log('onCardClick found match for', gaRoles[roleIndex].name);
+            playSound(roleIndex);
+            performAnimation(roleIndex);
 
             gTotalMatchesSoFar++;
             if (gTotalMatchesSoFar === gTotalMatchesPossible) {
@@ -183,17 +210,19 @@ function onTestButton() {
     console.log('Test button clicked.');
 }
 
-/* TODO: Function to perform animations for characters. */
-function performAnimation(characterIndex) {
-    //console.log('performAnimation:', gaCharacters[characterIndex].name);
+/* TODO: Function to perform animations for roles. */
+function performAnimation(roleIndex) {
+    //console.log('performAnimation:', gaRoles[roleIndex].name);
 }
 
 /* Function to look up the corresponding sound for a card. */
-function playSound(characterIndex) {
-    //console.log('playSound:', gaCharacters[characterIndex].name);
-    var soundFile = gaCharacters[characterIndex].soundFile;
-    var audio = new Audio(soundFile);
-    audio.play();
+function playSound(roleIndex) {
+    //console.log('playSound:', gaRoles[roleIndex].name);
+    var soundFile = gaRoles[roleIndex].soundFile;
+    if (soundFile !== null) {
+        var audio = new Audio(soundFile);
+        audio.play();
+    }
 }
 
 /* Reset game, either on initial document ready, or restarting.
@@ -208,32 +237,39 @@ function resetGame() {
     /* Hide all the cards by showing all the backs. */
     gameArea.find('.back').show();
 
-    /* Shuffle the deck. */
-    var baseDeck = [
-        CHARACTER_21_JUMP_STREET, CHARACTER_21_JUMP_STREET,
-        CHARACTER_EDWARD_SCISSORHANDS, CHARACTER_EDWARD_SCISSORHANDS,
-        CHARACTER_ICHABOD_CRANE, CHARACTER_ICHABOD_CRANE,
-        CHARACTER_JACK_SPARROW, CHARACTER_JACK_SPARROW,
-        CHARACTER_MAD_HATTER, CHARACTER_MAD_HATTER,
-        CHARACTER_SWEENEY_TODD, CHARACTER_SWEENEY_TODD,
-        CHARACTER_THE_WOLF, CHARACTER_THE_WOLF,
-        CHARACTER_TONTO, CHARACTER_TONTO,
-        CHARACTER_WILLY_WONKA, CHARACTER_WILLY_WONKA
-    ];
+    /* Pick nine roles from the gaRoles database; the baseDeck contains two of each of the nine roles. */
+    var roles = [   ROLE_BARNABAS_COLLINS, ROLE_DEAN_CORSO, ROLE_DON_JUAN_DEMARCO, ROLE_DONNIE_BRASCO,
+                    ROLE_ED_WOOD, ROLE_EDWARD_SCISSORHANDS, ROLE_GEORGE_JUNG, ROLE_GILBERT_GRAPE,
+                    ROLE_ICHABOD_CRANE, ROLE_JACK_SPARROW, ROLE_JOHN_DILLINGER, ROLE_LERNER, ROLE_MORTDECAI,
+                    ROLE_RANGO, ROLE_ROUX, ROLE_SWEENEY_TODD, ROLE_THE_MAD_HATTER, ROLE_THE_WOLF,
+                    ROLE_TOM_HANSON, ROLE_TONTO, ROLE_WILLY_WONKA ];
 
+    var baseDeck = [];
+    var i;
+    var randomIndex;
+    for (i = 0; i < ROLE_COUNT; i++) {
+        randomIndex = Math.floor(Math.random() * roles.length);
+        var temp = roles.splice(randomIndex, 1);
+        baseDeck.push(temp[0]);
+        baseDeck.push(temp[0]);
+    }
+    //console.log('baseDeck:', baseDeck);
+
+    /* Now shuffle the baseDeck into the deck in random order. */
     var deck = [];
     for (var i = 0; i < CARD_COUNT; i++) {
         var baseIndex = Math.floor(Math.random() * baseDeck.length);
-        deck.push(baseDeck.splice(baseIndex, 1));
+        deck.push(baseDeck.splice(baseIndex, 1)[0]);
     }
+    //console.log('deck:', deck);
 
     /* Set the source of the image for the each card front. */
     gameArea.find('.front img').each(function(index) {
-        var characterNum = deck[index];
-        var characterObj = gaCharacters[characterNum];
+        var roleNum = deck[index];
+        var roleObj = gaRoles[roleNum];
 
-        //console.log(index, ":", characterObj.imageFile);
-        $(this).attr('src', characterObj.imageFile);
+        //console.log(index, ":", roleObj.imageFile);
+        $(this).attr('src', roleObj.imageFile);
     });
 
     /* Reset all the basic variables, except increment game count. */
