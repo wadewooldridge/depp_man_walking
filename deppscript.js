@@ -18,6 +18,9 @@ $(document).ready(function() {
     $('.cheat').click(onCheatButton);
     $('.test').click(onTestButton); //.hide();      // Hide for normal distribution.
 
+    /* Display the basic information about Johnny Depp in the Trivia Corner. */
+    displayRoleObject(gRealLifeRole);
+
     /* Set up the initial configuration on cards in rows. */
     setUpGameArea();
 
@@ -31,6 +34,24 @@ $(document).ready(function() {
 /* Display an updated game count. */
 function displayGameCount() {
     $('.games-played .value').text(gGameCount);
+}
+
+/* Display a role object in the Trivia Corner. */
+function displayRoleObject(roleObj) {
+    console.log('displayRoleObject:', roleObj);
+
+    /* Display all the basic fields. */
+    $('#trivia-name').text(roleObj.name);
+    $('#trivia-movie').text(roleObj.movie + ' (' + roleObj.year + ')');
+    var triviaBasicDiv = $('#trivia-basic');
+    triviaBasicDiv.find('img').attr('src', roleObj.imageFile);
+    triviaBasicDiv.find('p').text(roleObj.basicText);
+
+    /* Update the links for the buttons to point at the new links. */
+    updateLink('imdb-link', roleObj.imdb);
+    updateLink('wikipedia-link', roleObj.wikipedia);
+    updateLink('tomatoes-link', roleObj.tomatoes);
+    updateLink('netflix-link', roleObj.netflix);
 }
 
 /* Display updated statistics. */
@@ -91,8 +112,13 @@ function onCardClick() {
             /* Found a match. */
             var roleIndex = getroleIndexFromImageSrc(firstCardSrc);
             //console.log('onCardClick found match for', gaRoles[roleIndex].name);
+            displayRoleObject(gaRoles[roleIndex]);
             playSound(roleIndex);
             performAnimation(roleIndex);
+
+            /* Reveal the card-text at the bottom that has been held off. */
+            $(gFirstCardClicked).find('.front').find('.card-text').removeClass('deferred');
+            $(gSecondCardClicked).find('.front').find('.card-text').removeClass('deferred');
 
             gTotalMatchesSoFar++;
             if (gTotalMatchesSoFar === gTotalMatchesPossible) {
@@ -157,6 +183,7 @@ function onCheatButtonTimeout() {
 /* Handle the test button. */
 function onTestButton() {
     console.log('Test button clicked.');
+
 }
 
 /* TODO: Function to perform animations for roles. */
@@ -219,6 +246,15 @@ function resetGame() {
 
         //console.log(index, ":", roleObj.imageFile);
         $(this).attr('src', roleObj.imageFile);
+
+        /* Set either the budget or box office for each card. */
+        if ((roleObj.usageCount % 2) === 0) {
+            $(this).parent().find('.card-text').text('Budget: ' + roleObj.budget);
+        } else {
+            $(this).parent().find('.card-text').text('Box Office: ' + roleObj.boxOffice);
+        }
+        roleObj.usageCount++;
+        console.log('roleObj.usageCount: ', roleObj.usageCount);
     });
 
     /* Reset all the basic variables, except increment game count. */
@@ -250,10 +286,32 @@ function setUpGameArea() {
         var frontImgElem = $('<img>');
         frontDiv.append(frontImgElem);
 
+        var frontTextDiv = $('<div>').addClass('card-text deferred');
+        frontDiv.append(frontTextDiv);
+/*
+        var frontTextElem = $('<p>');
+        frontTextDiv.append(frontTextElem);
+*/
         var backDiv = $('<div>').addClass('back');
         cardDiv.append(backDiv);
 
         var backImgElem = $('<img>');
         backDiv.append(backImgElem);
+    }
+}
+
+/* Update a button based on the link information; disable the button if no link. */
+function updateLink(linkId, newLink) {
+    var theLink = $('#' + linkId);
+    var theButton = $(theLink).find('button');
+
+    if (newLink === null || newLink === '') {
+        /* No link; disable the button. */
+        theLink.removeAttr('href');
+        theButton.addClass('disabled');
+    } else {
+        /* Link provided, update the href and enable. */
+        theLink.attr('href', newLink);
+        theButton.removeClass('disabled');
     }
 }
