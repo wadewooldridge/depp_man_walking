@@ -27,13 +27,20 @@ body {
     overflow: hidden;
 }
 
-.card img {
+.card img {                 /* Applies to .front, .back, and .special */
     position: absolute;
     max-width: 96%;
     border-radius: 3px;
-    top: 3px;
     left: 3px;
+}
+
+.front img {
+    top: 3px;
     transition: opacity 2s;
+}
+
+.back img {
+    top: 3px;
 }
 
 .card-text {
@@ -50,12 +57,33 @@ body {
 
 .card-text.deferred {
     bottom: -1.5em;
+    transition: 0s;
 }
 
 .matched {
     opacity: 0.5;
 }
 
+/* The 'special' is overlaid on top of the card for bringing up special items such as badges. */
+.special {
+    height: 100%;
+    opacity: 0.0;
+    transition: 2.0s;
+}
+
+.special.revealed {
+    opacity: 1.0;
+    transition: 0s;
+}
+
+.special img {
+    bottom: 12.0em;
+}
+
+.special.revealed img {
+    bottom: 2em;
+    transition: 2.0s;
+}
 /* Animation when clicking on a card you shouldn't. */
 @keyframes shaking {
     0% { transform:rotate(0deg); }

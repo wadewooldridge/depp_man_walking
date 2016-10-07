@@ -15,6 +15,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">Depp Man Walking</div>
         <div class="panel-body">
+            <h2>Overview</h2>
             <p>Depp Man Walking is an implementation of an image matching game implemented by Wade Wooldridge using the
                 following technologies:</p>
             <ul>
@@ -23,6 +24,28 @@
                 <li><strong>Bootstrap</strong>: for the basic page grid layout</li>
                 <li><strong>JavaScript</strong>: for program control and event handling</li>
                 <li><strong>JQuery</strong>: for dynamic creation of the page with random cards</li>
+            </ul>
+            <h2>Features</h2>
+            <p>Depp Man Walking includes the following features:</p>
+            <ul>
+                <li>21 Johnny Depp roles to increase replayability.</li>
+                <li>A Trivia Corner section that gives information about each role when it is matched.</li>
+                <li>Links from the Trivia Corner to IMDB, Wikipedia, Rotten Tomatoes, and Netflix.  These start
+                as the generic links for Johnny Depp, and switch on each match to the role-specific links.</li>
+                <li>Budget and Box Office numbers that are revealed for each role when it is matched.</li>
+                <li>Special "badges" for several roles that display awards that have been won.</li>
+            </ul>
+            <h2>Program Notes</h2>
+            <p>These notes are for developers that want to follow the DOM or program flow.</p>
+            <p>The basic layout of each card is:</p>
+            <ul>
+                <li><strong>.card</strong> - Contains the overall card layout.</li>
+                <ul>
+                    <li><strong>.front</strong> - Contains the role image and the Budget and Box Office text.</li>
+                    <li><strong>.back</strong> - Contains a general card back to hide the front until clicked.</li>
+                    <li><strong>.special</strong> - Contains a div for displaying badges and role-specific special
+                    animations.</li>
+                </ul>
             </ul>
         </div>
         <div class="panel-footer">

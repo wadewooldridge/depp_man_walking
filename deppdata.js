@@ -42,6 +42,7 @@ var gRealLifeRole =
         wikipedia:  'https://en.wikipedia.org/wiki/Johnny_Depp',
         netflix:    'https://dvd.netflix.com/RoleDisplay/Johnny-Depp/23954',
 
+        badgeFile:  null,
         imageFile:  'images/johnny_depp.jpg',
         movieFile:  null,
         soundFile:  null,
@@ -65,6 +66,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/Dark_Shadows_(film)',
         netflix:    'https://dvd.netflix.com/Movie/Dark-Shadows/70217909',
 
+        badgeFile:  'images/badge_kids_choice.jpg',
         imageFile:  'images/barnabas_collins.jpg',
         movieFile:  null,
         soundFile:  null,
@@ -85,6 +87,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/The_Ninth_Gate',
         netflix:    'https://dvd.netflix.com/Movie/The-Ninth-Gate/60000200',
 
+        badgeFile:  null,
         imageFile:  'images/dean_corso.jpg',
         movieFile:  null,
         soundFile:  null,
@@ -105,6 +108,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/Don_Juan_DeMarco',
         netflix:    'https://dvd.netflix.com/Movie/Don-Juan-DeMarco/452226',
 
+        badgeFile:  null,
         imageFile:  'images/don_juan_demarco.jpg',
         movieFile:  null,
         soundFile: null,
@@ -125,6 +129,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/Donnie_Brasco_(film)',
         netflix:    'https://dvd.netflix.com/Movie/Donnie-Brasco/1151721',
 
+        badgeFile:  null,
         imageFile:  'images/donnie_brasco.jpg',
         movieFile:  null,
         soundFile:  null,
@@ -145,6 +150,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/Ed_Wood_(film)',
         netflix:    'https://dvd.netflix.com/Movie/Ed-Wood/60010313',
 
+        badgeFile:  null,
         imageFile:  'images/ed_wood.jpg',
         movieFile:  null,
         soundFile:  null,
@@ -165,6 +171,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/Edward_Scissorhands',
         netflix:    'https://dvd.netflix.com/Movie/Edward-Scissorhands/60000527',
 
+        badgeFile:  null,
         imageFile: 'images/edward_scissorhands.jpg',
         movieFile:  null,
         soundFile: 'sounds/edward_scissorhands.wav',
@@ -184,6 +191,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/Blow_(film)',
         netflix:    'https://dvd.netflix.com/Movie/Blow/60020891',
 
+        badgeFile:  null,
         imageFile:  'images/george_jung.jpg',
         movieFile:  null,
         soundFile:  null,
@@ -203,6 +211,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/What%27s_Eating_Gilbert_Grape',
         netflix:    'https://dvd.netflix.com/Movie/What-s-Eating-Gilbert-Grape/60011552',
 
+        badgeFile:  null,
         imageFile:  'images/gilbert_grape.jpg',
         movieFile:  null,
         soundFile:  null,
@@ -223,6 +232,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/Sleepy_Hollow_(film)',
         netflix:    'https://dvd.netflix.com/Movie/Sleepy-Hollow/60000207',
 
+        badgeFile:  null,
         imageFile:  'images/ichabod_crane.jpg',
         movieFile:  null,
         soundFile:  'sounds/ichabod_crane.mp3',
@@ -243,6 +253,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/Pirates_of_the_Caribbean:_The_Curse_of_the_Black_Pearl',
         netflix:    'https://dvd.netflix.com/Movie/Pirates-of-the-Caribbean-The-Curse-of-the-Black-Pearl/60029157',
 
+        badgeFile:  'images/badge_peoples_choice.jpg',
         imageFile:  'images/jack_sparrow.jpg',
         movieFile:  null,
         soundFile:  'sounds/jack_sparrow.wav',
@@ -263,6 +274,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/Public_Enemies_(2009_film)',
         netflix:    'https://dvd.netflix.com/Movie/Public-Enemies/70111115',
 
+        badgeFile:  null,
         imageFile:  'images/john_dillinger.jpg',
         movieFile:  null,
         soundFile:  null,
@@ -283,6 +295,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/Platoon_(film)',
         netflix:    'https://dvd.netflix.com/Movie/Platoon/860591',
 
+        badgeFile:  'images/badge_hollywood_star.jpg',
         imageFile:  'images/lerner.jpg',
         movieFile:  null,
         soundFile:  null,
@@ -303,6 +316,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/Mortdecai_(film)',
         netflix:    'https://dvd.netflix.com/Movie/Mortdecai/80000467',
 
+        badgeFile:  null,
         imageFile:  'images/mortdecai.jpg',
         movieFile:  null,
         soundFile:  null,
@@ -324,6 +338,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/Rango_(2011_film)',
         netflix:    'https://dvd.netflix.com/Movie/Rango/70137742',
 
+        badgeFile:  null,
         imageFile:  'images/rango.jpg',
         movieFile:  null,
         soundFile:  null,
@@ -344,6 +359,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/Chocolat_(2000_film)',
         netflix:    'https://dvd.netflix.com/Movie/Chocolat/60003116',
 
+        badgeFile:  null,
         imageFile:  'images/roux.jpg',
         movieFile:  null,
         soundFile:  null,
@@ -364,6 +380,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/Sweeney_Todd:_The_Demon_Barber_of_Fleet_Street_(2007_film)',
         netflix:    'https://dvd.netflix.com/Movie/Sweeney-Todd/70077544',
 
+        badgeFile:  'images/badge_golden_globe.jpg',
         imageFile:  'images/sweeney_todd.jpg',
         movieFile:  null,
         soundFile:  'sounds/sweeney_todd.wav',
@@ -385,6 +402,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/Alice_in_Wonderland_(2010_film)',
         netflix:    'https://dvd.netflix.com/Movie/Alice-in-Wonderland/70113536',
 
+        badgeFile:  'images/badge_rembrandt.jpg',
         imageFile:  'images/mad_hatter.jpg',
         movieFile:  null,
         soundFile:  'sounds/mad_hatter.wav',
@@ -405,6 +423,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/Into_the_Woods_(film)',
         netflix:    'https://dvd.netflix.com/Movie/Into-the-Woods/70305948',
 
+        badgeFile:  null,
         imageFile:  'images/the_wolf.jpg',
         movieFile:  null,
         soundFile:  'sounds/the_wolf.mp3',
@@ -425,6 +444,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/21_Jump_Street',
         netflix:    'https://dvd.netflix.com/Movie/21-Jump-Street/70140349',
 
+        badgeFile:  'images/badge_imagen.jpg',
         imageFile:  'images/tom_hanson.jpg',
         movieFile:  null,
         soundFile:  'sounds/tom_hanson.mp3',
@@ -445,6 +465,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/The_Lone_Ranger_(2013_film)',
         netflix:    'https://dvd.netflix.com/Movie/The-Lone-Ranger/70243361',
 
+        badgeFile:  null,
         imageFile:  'images/tonto.jpg',
         movieFile:  null,
         soundFile:  'sounds/tonto.mp3',
@@ -465,6 +486,7 @@ var gaRoles = [
         wikipedia:  'https://en.wikipedia.org/wiki/Charlie_and_the_Chocolate_Factory_(film)',
         netflix:    'https://dvd.netflix.com/Movie/Charlie-and-the-Chocolate-Factory/70021648',
 
+        badgeFile:  'images/badge_teen_choice.jpg',
         imageFile:  'images/willy_wonka.jpg',
         movieFile:  null,
         soundFile:  'sounds/willy_wonka.wav',

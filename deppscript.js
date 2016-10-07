@@ -68,9 +68,33 @@ function displayStats() {
     $('.accuracy .value').text(accuracy);
 }
 
+/* Function to execute special actions for roles. */
+function executeSpecial(roleNum) {
+    var roleObj = gaRoles[roleNum];
+    console.log('executeSpecial:', roleObj.name);
+    var selector = '[role=' + roleNum + ']';
+    var cards = $(selector);
+
+    switch (roleNum) {
+        /* These are all the normal badges. */
+        case ROLE_BARNABAS_COLLINS:
+        case ROLE_JACK_SPARROW:
+        case ROLE_LERNER:
+        case ROLE_SWEENEY_TODD:
+        case ROLE_THE_MAD_HATTER:
+        case ROLE_TOM_HANSON:
+        case ROLE_WILLY_WONKA:
+            $(cards).find('.special').addClass('revealed');
+            break;
+
+        default:
+            break;
+    }
+}
+
 /* Function to look up the role index from the src string. */
-function getroleIndexFromImageSrc(srcString) {
-    //console.log('getroleIndexFromImageSrc:', srcString);
+function getroleNumFromImageSrc(srcString) {
+    //console.log('getroleNumFromImageSrc:', srcString);
 
     for (var i = 0; i < gaRoles.length; i++) {
         if (srcString.search(gaRoles[i].imageFile) != -1) {
@@ -86,7 +110,7 @@ function onCardClick() {
 
     /* Prevent card turning while waiting for turn back, or if the game is over.
        Likewise prevent the user from clicking on the first card a second time,
-       or a card that is already revealed. */
+       or a card that is already shown. */
     if (gGameLocked || gGameOver || ($(this).find('.back').is(':hidden'))) {
         var badCard = this;
         $(badCard).addClass('shaky');
@@ -110,11 +134,11 @@ function onCardClick() {
         //console.log('onCard Click compare: ' + firstCardSrc + ' vs. ' + secondCardSrc);
         if (firstCardSrc === secondCardSrc) {
             /* Found a match. */
-            var roleIndex = getroleIndexFromImageSrc(firstCardSrc);
-            //console.log('onCardClick found match for', gaRoles[roleIndex].name);
-            displayRoleObject(gaRoles[roleIndex]);
-            playSound(roleIndex);
-            performAnimation(roleIndex);
+            var roleNum = getroleNumFromImageSrc(firstCardSrc);
+            //console.log('onCardClick found match for', gaRoles[roleNum].name);
+            displayRoleObject(gaRoles[roleNum]);
+            playSound(roleNum);
+            executeSpecial(roleNum);
 
             /* Reveal the card-text at the bottom that has been held off. */
             $(gFirstCardClicked).find('.front').find('.card-text').removeClass('deferred');
@@ -186,15 +210,10 @@ function onTestButton() {
 
 }
 
-/* TODO: Function to perform animations for roles. */
-function performAnimation(roleIndex) {
-    //console.log('performAnimation:', gaRoles[roleIndex].name);
-}
-
 /* Function to look up the corresponding sound for a card. */
-function playSound(roleIndex) {
-    //console.log('playSound:', gaRoles[roleIndex].name);
-    var soundFile = gaRoles[roleIndex].soundFile;
+function playSound(roleNum) {
+    //console.log('playSound:', gaRoles[roleNum].name);
+    var soundFile = gaRoles[roleNum].soundFile;
     if (soundFile !== null) {
         var audio = new Audio(soundFile);
         audio.play();
@@ -212,6 +231,18 @@ function resetGame() {
 
     /* Hide all the cards by showing all the backs. */
     gameArea.find('.back').show();
+
+    /* Un-fade any previous matches by clearing any matched class. */
+    gameArea.find('.matched').removeClass('matched');
+
+    /* Hide all the card-text areas by setting them back to deferred. */
+    gameArea.find('.card-text').addClass('deferred');
+
+    /* Remove any badges from the special areas from the last game. */
+    gameArea.find('.special img').attr('src', '');
+
+    /* Hide all the special areas by clearing the revealed class. */
+    gameArea.find('.special').removeClass('revealed');
 
     /* Pick nine roles from the gaRoles database; the baseDeck contains two of each of the nine roles. */
     var roles = [   ROLE_BARNABAS_COLLINS, ROLE_DEAN_CORSO, ROLE_DON_JUAN_DEMARCO, ROLE_DONNIE_BRASCO,
@@ -239,22 +270,30 @@ function resetGame() {
     }
     //console.log('deck:', deck);
 
-    /* Set the source of the image for the each card front. */
-    gameArea.find('.front img').each(function(index) {
+    /* Set up the card tree structure. */
+    gameArea.find('.card').each(function(index) {
         var roleNum = deck[index];
         var roleObj = gaRoles[roleNum];
-
         //console.log(index, ":", roleObj.imageFile);
-        $(this).attr('src', roleObj.imageFile);
 
-        /* Set either the budget or box office for each card. */
+        /* Add an attribute to the card that holds the roleNum. */
+        $(this).attr('role', roleNum);
+
+        /* Set the front image. */
+        $(this).find('.front img').attr('src', roleObj.imageFile);
+
+        /* Set the front text to the budget or box office. */
+        var newCardText = '';
         if ((roleObj.usageCount % 2) === 0) {
-            $(this).parent().find('.card-text').text('Budget: ' + roleObj.budget);
+            newCardText = 'Budget: ' + roleObj.budget;
         } else {
-            $(this).parent().find('.card-text').text('Box Office: ' + roleObj.boxOffice);
+            newCardText = 'Box Office: ' + roleObj.boxOffice;
         }
+        $(this).find('.card-text').text(newCardText);
         roleObj.usageCount++;
-        console.log('roleObj.usageCount: ', roleObj.usageCount);
+
+        /* Set up the special image based on what the role is. */
+        setUpSpecial(this, roleNum);
     });
 
     /* Reset all the basic variables, except increment game count. */
@@ -288,16 +327,41 @@ function setUpGameArea() {
 
         var frontTextDiv = $('<div>').addClass('card-text deferred');
         frontDiv.append(frontTextDiv);
-/*
-        var frontTextElem = $('<p>');
-        frontTextDiv.append(frontTextElem);
-*/
+
         var backDiv = $('<div>').addClass('back');
         cardDiv.append(backDiv);
 
         var backImgElem = $('<img>');
         backDiv.append(backImgElem);
+
+        var specialDiv = $('<div>').addClass('special');
+        cardDiv.append(specialDiv);
+
+        var specialImgElem = $('<img>');
+        specialDiv.append(specialImgElem);
     }
+}
+
+/* Set up the special image based on what the character is. */
+function setUpSpecial(cardDiv, roleNum) {
+    var roleObj = gaRoles[roleNum];
+    console.log('setUpSpecial:', roleObj.name);
+
+    switch (roleNum) {
+        case ROLE_BARNABAS_COLLINS:
+        case ROLE_JACK_SPARROW:
+        case ROLE_LERNER:
+        case ROLE_SWEENEY_TODD:
+        case ROLE_THE_MAD_HATTER:
+        case ROLE_TOM_HANSON:
+        case ROLE_WILLY_WONKA:
+            $(cardDiv).find('.special img').attr('src', roleObj.badgeFile);
+            break;
+
+        default:
+            break;
+    }
+
 }
 
 /* Update a button based on the link information; disable the button if no link. */
