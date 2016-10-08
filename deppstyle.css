@@ -14,6 +14,58 @@ body {
     color: white;
 }
 
+.navbar {
+    margin-bottom: 0;
+}
+
+/* Styling for the marquee scrolling area at the top. */
+@font-face {
+    font-family: friday-night;
+    src: url('fonts/DJB_Friday_Night_Lights.ttf');
+}
+
+#marquee {
+    height: 4vw;
+    margin-bottom: 1em;
+    overflow: hidden;
+}
+
+#marquee-top, #marquee-bottom {
+    height: 20%;
+    background-size: auto 100%;
+    background-repeat: repeat-x;
+}
+
+#marquee-top {
+    background-image: url(images/topbar.gif);
+}
+
+#marquee-bottom {
+    background-image: url(images/bottombar.gif);
+}
+
+#marquee-top.hold, #marquee-bottom.hold {
+    background-image: none;
+    background-color: black;
+}
+
+#marquee-scroll {
+    position: relative;
+    height: 60%;
+    background-color: black;
+    overflow: hidden;
+}
+
+#marquee-text {
+    position: absolute;
+    margin: 0;
+    color: lightyellow;
+    font-family: friday-night;
+    font-size: 1.9vw;
+    text-transform: uppercase;
+    word-break: break-all;
+}
+
 /* Styling for the game area. */
 .card {
     position: relative;
@@ -51,7 +103,7 @@ body {
     font-weight: bold;
     text-align: center;
     margin-bottom: 0;
-    bottom: 0px;
+    bottom: 0;
     transition: bottom 2s;
 }
 
@@ -102,6 +154,7 @@ body {
 /* Formatting for the Trivia Corner panel. */
 #trivia h2, #trivia h3 {
     text-align: center;
+    margin: 8px 0 4px 0;
 }
 
 #trivia-basic img {

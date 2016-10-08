@@ -11,12 +11,20 @@ var gTotalMatchesSoFar = 0;                     // Count card match successes.
 var gGameLocked = false;                        // true while waiting for flip timeout.
 var gGameOver = false;                          // true once all matches have been found.
 
+var gMarqueeBusy = false;                       // true if message currently in progress.
+var gaMarqueeQueue = [];                        // Hold messages while the marquee is busy.
+
 /* Program initialization on document ready. */
 $(document).ready(function() {
     /* Set up the click handler for the various buttons. */
     $('.reset-game').click(resetGame);
     $('.cheat').click(onCheatButton);
-    $('.test').click(onTestButton); //.hide();      // Hide for normal distribution.
+    $('.test').click(onTestButton).hide();      // Hide for normal distribution.
+
+    /* Display the initial marquee messages. */
+    displayMarqueeMessage('Depp Man Walking - a Memory Match Game');
+    displayMarqueeMessage('Starring Johnny Depp');
+    displayMarqueeMessage('Produced and directed by Wade Wooldridge');
 
     /* Display the basic information about Johnny Depp in the Trivia Corner. */
     displayRoleObject(gRealLifeRole);
@@ -36,9 +44,48 @@ function displayGameCount() {
     $('.games-played .value').text(gGameCount);
 }
 
+/* Display a message on the marquee; queue messages if the marquee is busy. */
+function displayMarqueeMessage(message) {
+    // console.log('displayMarqueeMessage:', message);
+    gaMarqueeQueue.push(message);
+    if (!gMarqueeBusy) {
+        displayNextMarqueeMessage();
+    }
+}
+
+/* Display the next message on the gaMarqueeMessage queue.
+*  This can be called direct, or function as the completion handler of the last message. */
+function displayNextMarqueeMessage() {
+    /* Double-check if the marquee is busy. */
+    if (gMarqueeBusy || gaMarqueeQueue.length == 0) {
+        return;
+    }
+
+    var message = gaMarqueeQueue.shift();
+    // console.log('displayNextMarqueeMessage:', message);
+
+    var element = $('#marquee-text');
+    $(element).text(message);
+    var containerWidth = $(element).parent().width();
+    $(element).css('left', containerWidth);
+    $(element).animate({ left: '-100%' }, 9000, 'linear', onNextMarqueeCompletion);
+
+    $('#marquee-top').removeClass('hold');
+    $('#marquee-bottom').removeClass('hold');
+    gMarqueeBusy = true;
+}
+
+function onNextMarqueeCompletion() {
+    // console.log('onNextMarqueeCompletion:');
+    $('#marquee-top').addClass('hold');
+    $('#marquee-bottom').addClass('hold');
+    gMarqueeBusy = false;
+    displayNextMarqueeMessage();
+}
+
 /* Display a role object in the Trivia Corner. */
 function displayRoleObject(roleObj) {
-    console.log('displayRoleObject:', roleObj);
+    // console.log('displayRoleObject:', roleObj);
 
     /* Display all the basic fields. */
     $('#trivia-name').text(roleObj.name);
@@ -71,7 +118,7 @@ function displayStats() {
 /* Function to execute special actions for roles. */
 function executeSpecial(roleNum) {
     var roleObj = gaRoles[roleNum];
-    console.log('executeSpecial:', roleObj.name);
+    // console.log('executeSpecial:', roleObj.name);
     var selector = '[role=' + roleNum + ']';
     var cards = $(selector);
 
@@ -93,8 +140,8 @@ function executeSpecial(roleNum) {
 }
 
 /* Function to look up the role index from the src string. */
-function getroleNumFromImageSrc(srcString) {
-    //console.log('getroleNumFromImageSrc:', srcString);
+function getRoleNumFromImageSrc(srcString) {
+    // console.log('getRoleNumFromImageSrc:', srcString);
 
     for (var i = 0; i < gaRoles.length; i++) {
         if (srcString.search(gaRoles[i].imageFile) != -1) {
@@ -106,7 +153,7 @@ function getroleNumFromImageSrc(srcString) {
 
 /* Main handler when user clicks on a card. */
 function onCardClick() {
-    //console.log('onCardClick:', this);
+    // console.log('onCardClick:', this);
 
     /* Prevent card turning while waiting for turn back, or if the game is over.
        Likewise prevent the user from clicking on the first card a second time,
@@ -131,14 +178,17 @@ function onCardClick() {
 
         var firstCardSrc = $(gFirstCardClicked).find('.front').find('img')[0].src;
         var secondCardSrc = $(gSecondCardClicked).find('.front').find('img')[0].src;
-        //console.log('onCard Click compare: ' + firstCardSrc + ' vs. ' + secondCardSrc);
+        // console.log('onCard Click compare: ' + firstCardSrc + ' vs. ' + secondCardSrc);
         if (firstCardSrc === secondCardSrc) {
             /* Found a match. */
-            var roleNum = getroleNumFromImageSrc(firstCardSrc);
-            //console.log('onCardClick found match for', gaRoles[roleNum].name);
-            displayRoleObject(gaRoles[roleNum]);
+            var roleNum = getRoleNumFromImageSrc(firstCardSrc);
+            var roleObj = gaRoles[roleNum];
+
+            // console.log('onCardClick found match for', roleObj.name);
+            displayRoleObject(roleObj);
             playSound(roleNum);
             executeSpecial(roleNum);
+            displayMarqueeMessage('Matched: ' + roleObj.name + ' in ' + roleObj.movie);
 
             /* Reveal the card-text at the bottom that has been held off. */
             $(gFirstCardClicked).find('.front').find('.card-text').removeClass('deferred');
@@ -148,6 +198,7 @@ function onCardClick() {
             if (gTotalMatchesSoFar === gTotalMatchesPossible) {
                 /* Game is complete. */
                 $('#game-area').find('img').removeClass('matched');
+                displayMarqueeMessage('WINNER!! WINNER!! WINNER!!');
                 gGameOver = true;
             } else {
                 /* Still more matches to find. */
@@ -195,7 +246,7 @@ function onCheatButton() {
 
 /* Handle the cheat button timeout. */
 function onCheatButtonTimeout() {
-    //console.log('onCheatButtonTimeout');
+    // console.log('onCheatButtonTimeout');
     while (gaStateBeforeCheat.length > 0) {
         var back = gaStateBeforeCheat.pop();
         $(back).show();
@@ -212,7 +263,7 @@ function onTestButton() {
 
 /* Function to look up the corresponding sound for a card. */
 function playSound(roleNum) {
-    //console.log('playSound:', gaRoles[roleNum].name);
+    // console.log('playSound:', gaRoles[roleNum].name);
     var soundFile = gaRoles[roleNum].soundFile;
     if (soundFile !== null) {
         var audio = new Audio(soundFile);
@@ -260,7 +311,7 @@ function resetGame() {
         baseDeck.push(temp[0]);
         baseDeck.push(temp[0]);
     }
-    //console.log('baseDeck:', baseDeck);
+    // console.log('baseDeck:', baseDeck);
 
     /* Now shuffle the baseDeck into the deck in random order. */
     var deck = [];
@@ -268,13 +319,13 @@ function resetGame() {
         var baseIndex = Math.floor(Math.random() * baseDeck.length);
         deck.push(baseDeck.splice(baseIndex, 1)[0]);
     }
-    //console.log('deck:', deck);
+    // console.log('deck:', deck);
 
     /* Set up the card tree structure. */
     gameArea.find('.card').each(function(index) {
         var roleNum = deck[index];
         var roleObj = gaRoles[roleNum];
-        //console.log(index, ":", roleObj.imageFile);
+        // console.log(index, ":", roleObj.imageFile);
 
         /* Add an attribute to the card that holds the roleNum. */
         $(this).attr('role', roleNum);
@@ -308,6 +359,7 @@ function resetGame() {
 
     gGameCount++;
     displayGameCount();
+    displayMarqueeMessage('Resetting for game #' + gGameCount);
 }
 
 function setUpGameArea() {
@@ -345,7 +397,7 @@ function setUpGameArea() {
 /* Set up the special image based on what the character is. */
 function setUpSpecial(cardDiv, roleNum) {
     var roleObj = gaRoles[roleNum];
-    console.log('setUpSpecial:', roleObj.name);
+     console.log('setUpSpecial:', roleObj.name);
 
     switch (roleNum) {
         case ROLE_BARNABAS_COLLINS:
