@@ -51,7 +51,7 @@ var gRealLifeRole =
         notes:      []
     };
 
-/* Basic information for each role; these indices match the ROLE constants above. */
+/* Basic information for each role; these indices match the ROLE_xxx constants above. */
 var gaRoles = [
 //============================================================================================================//
     {   name:       'Barnabas Collins',

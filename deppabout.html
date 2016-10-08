@@ -38,15 +38,23 @@
             </ul>
             <h2>Program Notes</h2>
             <p>These notes are for developers that want to follow the DOM or program flow.</p>
+            <p>The main JavaScript source is in deppscript.js, but the static data for the roles is held in
+            deppdata.js, which should be loaded first by the HTML.</p>
             <p>The basic layout of each card is:</p>
             <ul>
-                <li><strong>.card</strong> - Contains the overall card layout.</li>
-                <ul>
-                    <li><strong>.front</strong> - Contains the role image and the Budget and Box Office text.</li>
-                    <li><strong>.back</strong> - Contains a general card back to hide the front until clicked.</li>
-                    <li><strong>.special</strong> - Contains a div for displaying badges and role-specific special
-                    animations.</li>
-                </ul>
+                <li><strong>.card</strong> - Contains the overall card layout.
+                    <ul>
+                        <li><strong>.front</strong> - Contains the role-specific card front.
+                            <ul>
+                                <li><strong>img</strong> - Contains the role image.</li>
+                                <li><strong>.card-text</strong> - Scrolls up Budget and Box Office text.</li>
+                            </ul>
+                        </li>
+                        <li><strong>.back</strong> - Contains a general card back to hide the front until clicked.</li>
+                        <li><strong>.special</strong> - Contains a div for displaying badges and role-specific special
+                        animations.
+                    </ul>
+                </li>
             </ul>
         </div>
         <div class="panel-footer">
