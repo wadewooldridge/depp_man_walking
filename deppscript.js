@@ -22,8 +22,7 @@ $(document).ready(function() {
     $('.test').click(onTestButton).hide();      // Hide for normal distribution.
 
     // Display the initial marquee messages; these will queue and display.
-    displayMarqueeMessage('Depp Man Walking - a Memory Match Game');
-    displayMarqueeMessage('Starring Johnny Depp');
+    displayMarqueeMessage('Depp Man Walking - a Memory Match Game Starring Johnny Depp');
     displayMarqueeMessage('Produced and directed by Wade Wooldridge');
 
     // Display the basic information about Johnny Depp in the Trivia Corner.
@@ -70,7 +69,7 @@ function displayNextMarqueeMessage() {
 
     // This is done as a JQuery animation so we can get the event handler and queue the next one.
     $(element).css('left', containerWidth);
-    $(element).animate({ left: '-100%' }, 9000, 'linear', onNextMarqueeCompletion);
+    $(element).animate({ left: '-100%' }, 10000, 'linear', onNextMarqueeCompletion);
 
     // Turn on the scrolling lights around the marquee message.
     $('#marquee-top').removeClass('hold');
@@ -154,6 +153,7 @@ function onCardClick() {
     if (gGameLocked || gGameOver || ($(this).find('.back').is(':hidden'))) {
         var badCard = this;
         $(badCard).addClass('shaky');
+        playBoing();
         window.setTimeout( function() { $(badCard).removeClass('shaky'); }, 1000);
         return;
     }
@@ -180,7 +180,7 @@ function onCardClick() {
 
             // console.log('onCardClick found match for', roleObj.name);
             displayRoleObject(roleObj);
-            playSound(roleNum);
+            playSoundForRole(roleNum);
             executeSpecial(roleNum);
             var matchMessage = 'Matched: ' + roleObj.name + ' in \'' + roleObj.movie + '\'';
 
@@ -257,9 +257,16 @@ function onTestButton() {
 
 }
 
-/* Function to look up the corresponding sound for a card. */
-function playSound(roleNum) {
-    // console.log('playSound:', gaRoles[roleNum].name);
+/* Function to play a 'boing' for selecting a card you shouldn't. */
+function playBoing() {
+    var soundFile = 'sounds/boing.mp3';
+    var audio = new Audio(soundFile);
+    audio.play();
+}
+
+/* Function to look up and play the corresponding sound for a card. */
+function playSoundForRole(roleNum) {
+    // console.log('playSoundForRole:', gaRoles[roleNum].name);
     var soundFile = gaRoles[roleNum].soundFile;
     if (soundFile !== null) {
         var audio = new Audio(soundFile);

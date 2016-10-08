@@ -45,8 +45,7 @@ body {
 }
 
 #marquee-top.hold, #marquee-bottom.hold {
-    background-image: none;
-    background-color: black;
+    background-image: url(images/offbar.gif);
 }
 
 #marquee-scroll {
