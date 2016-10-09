@@ -5,6 +5,10 @@ body {
     background-color: #777;
 }
 
+.panel-group {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
 .panel {
     border: 2px solid black;
 }
@@ -67,6 +71,13 @@ body {
     font-size: 1.9vw;
     text-transform: uppercase;
     word-break: break-all;
+}
+
+/* Styling for the Statistics box. */
+.value {
+    position: absolute;
+    font-size: 150%;
+    right: 40%;
 }
 
 /* Styling for the Screening Room area. */

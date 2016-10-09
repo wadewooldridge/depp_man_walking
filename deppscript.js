@@ -134,13 +134,13 @@ function executeSpecial(roleNum) {
 
     switch (roleNum) {
         // These are all the normal badges.
-        case ROLE_BARNABAS_COLLINS:
-        case ROLE_JACK_SPARROW:
-        case ROLE_LERNER:
-        case ROLE_SWEENEY_TODD:
-        case ROLE_THE_MAD_HATTER:
-        case ROLE_TOM_HANSON:
-        case ROLE_WILLY_WONKA:
+        case roleIndex.BARNABAS_COLLINS:
+        case roleIndex.JACK_SPARROW:
+        case roleIndex.LERNER:
+        case roleIndex.SWEENEY_TODD:
+        case roleIndex.THE_MAD_HATTER:
+        case roleIndex.TOM_HANSON:
+        case roleIndex.WILLY_WONKA:
             $(cards).find('.special').addClass('revealed');
             break;
 
@@ -354,20 +354,21 @@ function resetGame() {
     gameArea.find('.special').removeClass('revealed');
 
     /* Pick nine roles from the gaRoles database; the baseDeck contains two of each of the nine roles. */
-    var roles = [   ROLE_BARNABAS_COLLINS, ROLE_DEAN_CORSO, ROLE_DON_JUAN_DEMARCO, ROLE_DONNIE_BRASCO,
-                    ROLE_ED_WOOD, ROLE_EDWARD_SCISSORHANDS, ROLE_GEORGE_JUNG, ROLE_GILBERT_GRAPE,
-                    ROLE_ICHABOD_CRANE, ROLE_JACK_SPARROW, ROLE_JOHN_DILLINGER, ROLE_LERNER, ROLE_MORTDECAI,
-                    ROLE_RANGO, ROLE_ROUX, ROLE_SWEENEY_TODD, ROLE_THE_MAD_HATTER, ROLE_THE_WOLF,
-                    ROLE_TOM_HANSON, ROLE_TONTO, ROLE_WILLY_WONKA ];
-
+    var availableRoles = [];
     var baseDeck = [];
     var i;
     var randomIndex;
+
+    // Build a list of valid roles.
+    for (i = roleIndex.MIN; i <= roleIndex.MAX; i++) {
+        availableRoles.push(i);
+    }
+
+    // Now pick the nine we are going to use, and push each twice on the deck.
     for (i = 0; i < ROLE_COUNT; i++) {
-        randomIndex = Math.floor(Math.random() * roles.length);
-        var temp = roles.splice(randomIndex, 1);
-        baseDeck.push(temp[0]);
-        baseDeck.push(temp[0]);
+        randomIndex = Math.floor(Math.random() * availableRoles.length);
+        var temp = availableRoles.splice(randomIndex, 1)[0];
+        baseDeck.push(temp, temp);
     }
     // console.log('baseDeck:', baseDeck);
 
@@ -458,13 +459,13 @@ function setUpSpecial(cardDiv, roleNum) {
      console.log('setUpSpecial:', roleObj.name);
 
     switch (roleNum) {
-        case ROLE_BARNABAS_COLLINS:
-        case ROLE_JACK_SPARROW:
-        case ROLE_LERNER:
-        case ROLE_SWEENEY_TODD:
-        case ROLE_THE_MAD_HATTER:
-        case ROLE_TOM_HANSON:
-        case ROLE_WILLY_WONKA:
+        case roleIndex.BARNABAS_COLLINS:
+        case roleIndex.JACK_SPARROW:
+        case roleIndex.LERNER:
+        case roleIndex.SWEENEY_TODD:
+        case roleIndex.THE_MAD_HATTER:
+        case roleIndex.TOM_HANSON:
+        case roleIndex.WILLY_WONKA:
             $(cardDiv).find('.special img').attr('src', roleObj.badgeFile);
             break;
 

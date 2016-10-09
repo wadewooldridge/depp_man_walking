@@ -7,27 +7,31 @@ var CARD_COUNT = ROLE_COUNT * 2;                // Cards displayed.
 var ROW_COUNT = 3;                              // Number of rows.
 var CARDS_PER_ROW = CARD_COUNT / ROW_COUNT;     // Cards in each row.
 
-var ROLE_BARNABAS_COLLINS = 0;
-var ROLE_DEAN_CORSO = 1;
-var ROLE_DON_JUAN_DEMARCO = 2;
-var ROLE_DONNIE_BRASCO = 3;
-var ROLE_ED_WOOD = 4;
-var ROLE_EDWARD_SCISSORHANDS = 5;
-var ROLE_GEORGE_JUNG = 6;
-var ROLE_GILBERT_GRAPE = 7;
-var ROLE_ICHABOD_CRANE = 8;
-var ROLE_JACK_SPARROW = 9;
-var ROLE_JOHN_DILLINGER = 10;
-var ROLE_LERNER = 11;
-var ROLE_MORTDECAI = 12;
-var ROLE_RANGO = 13;
-var ROLE_ROUX = 14;
-var ROLE_SWEENEY_TODD = 15;
-var ROLE_THE_MAD_HATTER = 16;
-var ROLE_THE_WOLF = 17;
-var ROLE_TOM_HANSON = 18;
-var ROLE_TONTO = 19;
-var ROLE_WILLY_WONKA = 20;
+var roleIndex = {
+    MIN:                 0,
+    BARNABAS_COLLINS:    0,
+    DEAN_CORSO:          1,
+    DON_JUAN_DEMARCO:    2,
+    DONNIE_BRASCO:       3,
+    ED_WOOD:             4,
+    EDWARD_SCISSORHANDS: 5,
+    GEORGE_JUNG:         6,
+    GILBERT_GRAPE:       7,
+    ICHABOD_CRANE:       8,
+    JACK_SPARROW:        9,
+    JOHN_DILLINGER:     10,
+    LERNER:             11,
+    MORTDECAI:          12,
+    RANGO:              13,
+    ROUX:               14,
+    SWEENEY_TODD:       15,
+    THE_MAD_HATTER:     16,
+    THE_WOLF:           17,
+    TOM_HANSON:         18,
+    TONTO:              19,
+    WILLY_WONKA:        20,
+    MAX:                20
+}
 
 /* Pseudo-object for real-life data. */
 var gRealLifeRole =
@@ -467,7 +471,7 @@ var gaRoles = [
 
         badgeFile:  'images/badge_teen_choice.jpg',
         imageFile:  'images/willy_wonka.jpg',
-        youtube:    {videoId: 'DbaO7LfjzGQ', startSeconds: 50, endSeconds: 61},
+        youtube:    {videoId: 'DbaO7LfjzGQ', startSeconds: 50, endSeconds: 62},
         basicText:  'A young boy wins a tour through the most magnificent chocolate factory in the world, led by \ ' +
         'the world\'s most unusual candy maker.',
         notes:      []
