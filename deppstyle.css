@@ -14,6 +14,10 @@ body {
     color: white;
 }
 
+#stats-panel {
+    margin-bottom: 1em;
+}
+
 .navbar {
     margin-bottom: 0;
 }
@@ -63,6 +67,38 @@ body {
     font-size: 1.9vw;
     text-transform: uppercase;
     word-break: break-all;
+}
+
+/* Styling for the Screening Room area. */
+#screening-room {
+    position: relative;
+    padding: 0;
+    background-color: black;
+    width: 100%;
+    height: 30vh;
+    overflow: hidden;
+}
+
+#video-iframe {
+    position: absolute;
+    width: 100%;
+    height: auto;
+}
+
+#curtains-div {
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    overflow: hidden;
+    transition: bottom 2s;
+}
+
+#curtains-div.raised{
+    bottom: 100%;
+}
+
+#curtains {
+    height: 100%;
 }
 
 /* Styling for the game area. */

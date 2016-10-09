@@ -14,6 +14,9 @@ var gGameOver = false;                          // true once all matches have be
 var gMarqueeBusy = false;                       // true if message currently in progress.
 var gaMarqueeQueue = [];                        // Hold messages while the marquee is busy.
 
+var gPlayer = null;                             // YouTube API player.
+var gVideoPlaying = false;                      // true while playing a video; prevent clashes.
+
 /* Program initialization on document ready. */
 $(document).ready(function() {
     // Set up the click handler for the various buttons.
@@ -24,6 +27,9 @@ $(document).ready(function() {
     // Display the initial marquee messages; these will queue and display.
     displayMarqueeMessage('Depp Man Walking - a Memory Match Game Starring Johnny Depp');
     displayMarqueeMessage('Produced and directed by Wade Wooldridge');
+
+    // Start the introductory video. (Can't play right away as video player is not ready.)
+    //playYouTubeClip('dceCjepU21o', 5, 10);
 
     // Display the basic information about Johnny Depp in the Trivia Corner.
     displayRoleObject(gRealLifeRole);
@@ -180,7 +186,7 @@ function onCardClick() {
 
             // console.log('onCardClick found match for', roleObj.name);
             displayRoleObject(roleObj);
-            playSoundForRole(roleNum);
+            playYouTubeForRole(roleNum);
             executeSpecial(roleNum);
             var matchMessage = 'Matched: ' + roleObj.name + ' in \'' + roleObj.movie + '\'';
 
@@ -194,6 +200,7 @@ function onCardClick() {
                 $('#game-area').find('img').removeClass('matched');
                 // Tie the WINNER message on to the last match, so they come out closer in time.
                 displayMarqueeMessage(matchMessage + '  ---  WINNER!! WINNER!! WINNER!!');
+                playCheer();
                 gGameOver = true;
             } else {
                 // Still more matches to find.
@@ -257,6 +264,36 @@ function onTestButton() {
 
 }
 
+/* Required callback for YouTube IFrame API. */
+function onYouTubeIframeAPIReady() {
+    console.log('onYouTubeIframeAPIReady');
+
+    gPlayer = new YT.Player('video-iframe', {
+        videoId: 'O6UvdI1sDdY',
+        events: {
+            'onReady': onYouTubePlayerReady,
+            'onStateChange': onYouTubePlayerStateChange
+        }
+    });
+    console.log(gPlayer);
+}
+
+/* YouTube IFrame API calback for onReady. */
+function onYouTubePlayerReady(event) {
+    console.log('onYouTubePlayerReady: target=' + event.target);
+    event.target.playVideo();
+}
+
+/* YouTube IFrame API calback for onReady. */
+function onYouTubePlayerStateChange(event) {
+    console.log('onYouTubePlayerStateChange: event.data=' + event.data);
+    if (event.data == YT.PlayerState.PLAYING) {
+        $('#curtains-div').addClass('raised');
+    } else if (event.data == YT.PlayerState.ENDED) {
+        $('#curtains-div').removeClass('raised');
+    }
+}
+
 /* Function to play a 'boing' for selecting a card you shouldn't. */
 function playBoing() {
     var soundFile = 'sounds/boing.mp3';
@@ -264,14 +301,36 @@ function playBoing() {
     audio.play();
 }
 
-/* Function to look up and play the corresponding sound for a card. */
-function playSoundForRole(roleNum) {
-    // console.log('playSoundForRole:', gaRoles[roleNum].name);
-    var soundFile = gaRoles[roleNum].soundFile;
-    if (soundFile !== null) {
-        var audio = new Audio(soundFile);
-        audio.play();
+/* Function to play a 'cheer' for winning the game. */
+function playCheer() {
+    var soundFile = 'sounds/cheer1.mp3';
+    var audio = new Audio(soundFile);
+    audio.play();
+}
+
+/* Function to look up and play the corresponding YouTube clip for a role. */
+function playYouTubeForRole(roleNum) {
+    console.log('playYouTubeForRole:', gaRoles[roleNum].name);
+    clipObject = gaRoles[roleNum].youtube;
+    if (clipObject !== null) {
+        console.log('playYouTubeForRole:', clipObject);
+        gPlayer.loadVideoById(clipObject);
     }
+}
+
+/* Play a video in the screening room. */
+function playVideo(url) {
+    console.log('playVideo:', url);
+    if (gVideoPlaying) {
+        return;
+    }
+    // If the URL doesn't already have autoplay, add it.
+    if (url.search(/autoplay/i) === -1) {
+        url += "?autoplay=1";
+    }
+
+    // Make this URL the src string of the video-iframe.
+    $('#video-iframe').attr('src', url);
 }
 
 /* Reset game, either on initial document ready, or restarting.

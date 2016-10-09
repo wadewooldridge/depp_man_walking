@@ -44,8 +44,7 @@ var gRealLifeRole =
 
         badgeFile:  null,
         imageFile:  'images/johnny_depp.jpg',
-        movieFile:  null,
-        soundFile:  null,
+        youtube:    null,
         basicText:  'John Christopher "Johnny" Depp II (born Jule 9, 1963) is an American actor, producer, and \
         musician. He has won the Golden Globe Award and Screen Actors Guild Award for Best Actor.',
         notes:      []
@@ -68,8 +67,7 @@ var gaRoles = [
 
         badgeFile:  'images/badge_kids_choice.jpg',
         imageFile:  'images/barnabas_collins.jpg',
-        movieFile:  null,
-        soundFile:  null,
+        youtube:    {videoId: 'QqY7f0Lvbj0', startSeconds: 15, endSeconds: 25},
         basicText:  'An imprisoned vampire, Barnabas Collins, is set free and returns to his ancestral home, \ ' +
         'where his dysfunctional descendants are in need of his protection.',
         notes:      []
@@ -89,8 +87,7 @@ var gaRoles = [
 
         badgeFile:  null,
         imageFile:  'images/dean_corso.jpg',
-        movieFile:  null,
-        soundFile:  null,
+        youtube:    {videoId: '2wv06DKLXmI', startSeconds: 191, endSeconds: 203},
         basicText:  'A rare book dealer, while seeking out the last two copies of a demon text, gets drawn into \ ' +
         'a conspiracy with supernatural overtones.',
         notes:      []
@@ -110,8 +107,7 @@ var gaRoles = [
 
         badgeFile:  null,
         imageFile:  'images/don_juan_demarco.jpg',
-        movieFile:  null,
-        soundFile: null,
+        youtube:    {videoId: 'vkmSVmV_E4g', startSeconds: 2, endSeconds: 27},
         basicText:  'A psychiatrist must cure a young patient that presents himself as Don Juan, the greatest \ ' +
         'lover in the world.',
         notes:      []
@@ -131,8 +127,7 @@ var gaRoles = [
 
         badgeFile:  null,
         imageFile:  'images/donnie_brasco.jpg',
-        movieFile:  null,
-        soundFile:  null,
+        youtube:    {videoId: 'twkjN0xQsWw', startSeconds: 96, endSeconds: 107},
         basicText:  'An FBI undercover agent infiltrates the mob and finds himself identifying more with the mafia \ ' +
         'life, at the expense of his regular one.',
         notes:      []
@@ -152,8 +147,7 @@ var gaRoles = [
 
         badgeFile:  null,
         imageFile:  'images/ed_wood.jpg',
-        movieFile:  null,
-        soundFile:  null,
+        youtube:    {videoId: 'ZOenlU1qATY', startSeconds: 38, endSeconds: 52},
         basicText:  'An ambitious but troubled movie director tries his best to fulfill his dream, despite his \ ' +
         'lack of support.',
         notes:      []
@@ -173,8 +167,7 @@ var gaRoles = [
 
         badgeFile:  null,
         imageFile: 'images/edward_scissorhands.jpg',
-        movieFile:  null,
-        soundFile: 'sounds/edward_scissorhands.wav',
+        youtube:    {videoId: 'P4gTvnpO1fM', startSeconds: 49, endSeconds: 67},
         basicText:  'A gentle man, with scissors for hands, is brought into a new community after living in isolation.',
         notes:      []
     },
@@ -193,8 +186,7 @@ var gaRoles = [
 
         badgeFile:  null,
         imageFile:  'images/george_jung.jpg',
-        movieFile:  null,
-        soundFile:  null,
+        youtube:    {videoId: 'JVVlF-QVUXI', startSeconds: 109, endSeconds: 125},
         basicText:  'The story of George Jung, the man who established the American cocaine market in the 1970s.',
         notes:      []
     },
@@ -213,8 +205,7 @@ var gaRoles = [
 
         badgeFile:  null,
         imageFile:  'images/gilbert_grape.jpg',
-        movieFile:  null,
-        soundFile:  null,
+        youtube:    {videoId: 'i5KBVCoKYt0', startSeconds: 32, endSeconds: 47},
         basicText:  'After his father\'s death, Gilbert has to care for his mentally disabled brother, Arnie, \ ' +
         'and his morbidly obese mother, which is suddenly challenged when love walks into his life.',
         notes:      []
@@ -234,8 +225,7 @@ var gaRoles = [
 
         badgeFile:  null,
         imageFile:  'images/ichabod_crane.jpg',
-        movieFile:  null,
-        soundFile:  'sounds/ichabod_crane.mp3',
+        youtube:    {videoId: 'ry-_MF6TEFU', startSeconds: 49, endSeconds: 59},
         basicText:  'Ichabod Crane is sent to Sleepy Hollow to investigate the decapitations of 3 people with the \ ' +
         'culprit being the legendary apparition, the Headless Horseman.',
         notes:      []
@@ -255,8 +245,7 @@ var gaRoles = [
 
         badgeFile:  'images/badge_peoples_choice.jpg',
         imageFile:  'images/jack_sparrow.jpg',
-        movieFile:  null,
-        soundFile:  'sounds/jack_sparrow.wav',
+        youtube:    {videoId: 'wtUYgk4JGiA', startSeconds: 276, endSeconds: 292},
         basicText:  'Blacksmith Will Turner teams up with eccentric pirate "Captain" Jack Sparrow to save his \ ' +
         'love, the governor\'s daughter, from Jack\'s former pirate allies, who are now undead.',
         notes:      []
@@ -276,8 +265,7 @@ var gaRoles = [
 
         badgeFile:  null,
         imageFile:  'images/john_dillinger.jpg',
-        movieFile:  null,
-        soundFile:  null,
+        youtube:    {videoId: 'wTz_kSiZaIM', startSeconds: 71, endSeconds: 90},
         basicText:  'The Feds try to take down notorious American gangsters John Dillinger, Baby Face Nelson \ ' +
         'and Pretty Boy Floyd during a booming crime wave in the 1930s.',
         notes:      []
@@ -297,8 +285,7 @@ var gaRoles = [
 
         badgeFile:  'images/badge_hollywood_star.jpg',
         imageFile:  'images/lerner.jpg',
-        movieFile:  null,
-        soundFile:  null,
+        youtube:    {videoId: 'fQD0IFW7I0k', startSeconds: 0, endSeconds: 10},
         basicText:  'A young recruit in Vietnam faces a moral crisis when confronted with the horrors of war \ ' +
         'and the duality of man.',
         notes:      []
@@ -318,8 +305,7 @@ var gaRoles = [
 
         badgeFile:  null,
         imageFile:  'images/mortdecai.jpg',
-        movieFile:  null,
-        soundFile:  null,
+        youtube:    {videoId: '8YsSbKcR3LY', startSeconds: 50, endSeconds: 60},
         basicText:  'Juggling angry Russians, the British Mi5, and an international terrorist, debonair art \ ' +
         'dealer and part time rogue Charlie Mortdecai races to recover a stolen painting rumored to contain a \ ' +
         'code that leads to lost Nazi gold.',
@@ -340,8 +326,7 @@ var gaRoles = [
 
         badgeFile:  null,
         imageFile:  'images/rango.jpg',
-        movieFile:  null,
-        soundFile:  null,
+        youtube:    {videoId: 'hptQDGywkyQ', startSeconds: 5, endSeconds: 21},
         basicText:  'Rango is an ordinary chameleon who accidentally winds up in the town of Dirt, a \ ' +
         'lawless outpost in the Wild West in desperate need of a new sheriff.',
         notes:      []
@@ -361,8 +346,7 @@ var gaRoles = [
 
         badgeFile:  null,
         imageFile:  'images/roux.jpg',
-        movieFile:  null,
-        soundFile:  null,
+        youtube:    {videoId: 'yoGdST0RFuc', startSeconds: 117, endSeconds: 130},
         basicText:  'A woman and her daughter open a chocolate shop in a small French village that shakes up \ ' +
         'the rigid morality of the community.',
         notes:      []
@@ -382,8 +366,7 @@ var gaRoles = [
 
         badgeFile:  'images/badge_golden_globe.jpg',
         imageFile:  'images/sweeney_todd.jpg',
-        movieFile:  null,
-        soundFile:  'sounds/sweeney_todd.wav',
+        youtube:    {videoId: 'xamDprXBtBg', startSeconds: 34, endSeconds: 51},
         basicText:  'The infamous story of Benjamin Barker, AKA Sweeney Todd, who sets up a barber shop down in \ ' +
         'London which is the basis for a sinister partnership with his fellow tenant, Mrs. Lovett. Based on the \ ' +
         'hit Broadway musical.',
@@ -404,8 +387,7 @@ var gaRoles = [
 
         badgeFile:  'images/badge_rembrandt.jpg',
         imageFile:  'images/mad_hatter.jpg',
-        movieFile:  null,
-        soundFile:  'sounds/mad_hatter.wav',
+        youtube:    {videoId: 'kzkfQK4I5eE', startSeconds: 67, endSeconds: 85},
         basicText:  'Nineteen-year-old Alice returns to the magical world from her childhood adventure, where \ ' +
         'she reunites with her old friends and learns of her true destiny: to end the Red Queen\'s reign of terror.',
         notes:      []
@@ -425,8 +407,7 @@ var gaRoles = [
 
         badgeFile:  null,
         imageFile:  'images/the_wolf.jpg',
-        movieFile:  null,
-        soundFile:  'sounds/the_wolf.mp3',
+        youtube:    {videoId: 'ryAyTzGA-dk', startSeconds: 1, endSeconds: 17},
         basicText:  'A witch tasks a childless baker and his wife with procuring magical items from classic \ ' +
         'fairy tales to reverse the curse put on their family tree.',
         notes:      []
@@ -446,8 +427,7 @@ var gaRoles = [
 
         badgeFile:  'images/badge_imagen.jpg',
         imageFile:  'images/tom_hanson.jpg',
-        movieFile:  null,
-        soundFile:  'sounds/tom_hanson.mp3',
+        youtube:    {videoId: 'H3IUL9SwfgA', startSeconds: 1, endSeconds: 15},
         basicText:  'The cases of an undercover police unit composed of young looking officers specializing in \ ' +
         'youth crime.',
         notes:      []
@@ -467,8 +447,7 @@ var gaRoles = [
 
         badgeFile:  null,
         imageFile:  'images/tonto.jpg',
-        movieFile:  null,
-        soundFile:  'sounds/tonto.mp3',
+        youtube:    {videoId: 'JjFsNSoDZK8', startSeconds: 64, endSeconds: 81},
         basicText:  'Native American warrior Tonto recounts the untold tales that transformed John Reid, a man \ ' +
         'of the law, into a legend of justice.',
         notes:      []
@@ -488,8 +467,7 @@ var gaRoles = [
 
         badgeFile:  'images/badge_teen_choice.jpg',
         imageFile:  'images/willy_wonka.jpg',
-        movieFile:  null,
-        soundFile:  'sounds/willy_wonka.wav',
+        youtube:    {videoId: 'DbaO7LfjzGQ', startSeconds: 50, endSeconds: 61},
         basicText:  'A young boy wins a tour through the most magnificent chocolate factory in the world, led by \ ' +
         'the world\'s most unusual candy maker.',
         notes:      []
