@@ -1,8 +1,10 @@
-/* Formatting for the card divs and images. */
-
 /* Basic stying for overall page. */
 body {
     background-color: #777;
+}
+
+.punch {
+    font-weight: bold;
 }
 
 .panel-group {

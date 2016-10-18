@@ -21,8 +21,8 @@ var gVideoPlaying = false;                      // true while playing a video; p
 $(document).ready(function() {
     // Set up the click handler for the various buttons.
     $('.reset-game').click(resetGame);
-    $('.cheat').click(onCheatButton);
-    $('.test').click(onTestButton).hide();      // Hide for normal distribution.
+    $('#cheat-button').click(onCheatButton);
+    $('#test-button').click(onTestButton).hide();      // Hide for normal distribution.
 
     // Display the initial marquee messages; these will queue and display.
     displayMarqueeMessage('Depp Man Walking - a Memory Match Game Starring Johnny Depp');
@@ -116,7 +116,7 @@ function displayRoleObject(roleObj) {
 function displayStats() {
     var accuracy;
 
-    if (gAttempts == 0) {
+    if (gAttempts === 0) {
         accuracy = "TBD";
     } else {
         accuracy = ((gTotalMatchesSoFar / gAttempts) * 100).toFixed(0) + "%";
