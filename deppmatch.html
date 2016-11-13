@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Depp Man Walking</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="deppstyle.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <script src="deppdata.js"></script>
+    <script src="deppscript.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><img src="images/logo_small.gif"></a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="#" class="reset-game">Reset Game</a></li>
+            <li><a href="deppabout.html" target="_blank">About</a></li>
+        </ul>
+    </div>
+</nav>
+<div id="marquee">
+    <div id="marquee-top"></div>
+    <div id="marquee-scroll">
+        <p id="marquee-text"></p>
+    </div>
+    <div id="marquee-bottom"></div>
+</div>
+<div class="row">
+    <div class="col-xs-3 panel-group">
+        <div class="panel panel-default" id="stats-panel">
+            <div class="panel-heading">Statistics</div>
+            <div class="panel-body">
+                <div class="games-played">
+                    <span class="label label-default">Games Played:</span>
+                    <span class="value">0</span>
+                </div>
+                <div class="attempts">
+                    <span class="label label-default">Attempts (this game):</span>
+                    <span class="value">0</span>
+                </div>
+                <div class="accuracy">
+                    <span class="label label-default">Accuracy:</span>
+                    <span class="value">TBD</span>
+                </div>
+                <br>
+                <div>
+                    <button class="reset btn btn-block btn-primary reset-game">Reset Game</button>
+                </div>
+                <br>
+                <div>
+                    <button class="reset btn btn-block btn-danger" id="cheat-button">Cheat</button>
+                </div>
+                <br>
+                <div>
+                    <button class="reset btn btn-block btn-primary" id="test-button">Test</button>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Screening Room</div>
+            <div class="panel-body" id="screening-room">
+                <div id="video-iframe">             <!-- Gets replaced by YouTube iframe. -->
+                </div>
+                <div id="curtains-div">
+                    <img src="images/curtains.jpg" id="curtains">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6 panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">Game Area</div>
+            <div class="panel-body" id="game-area">
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3 panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">Trivia Corner</div>
+            <div class="panel-body" id="trivia">
+                <h2>Johnny Depp</h2>
+                <h3>as</h3>
+                <h2 id="trivia-name"></h2>
+                <h3>in</h3>
+                <h2 id="trivia-movie"></h2>
+                <hr>
+                <div id="trivia-basic">
+                    <img>
+                    <p></p>
+                </div>
+
+                <hr>
+                <div id="button-div">
+                    <a href="" target="_blank" id="imdb-link">
+                        <button class="btn btn-large trivia-button">
+                            <img src="images/imdb_button.gif">
+                        </button>
+                    </a>
+                    <a href="" target="_blank" id="wikipedia-link">
+                        <button class="btn btn-large trivia-button">
+                            <img src="images/wikipedia_button.jpg">
+                        </button>
+                    </a>
+                    <a href="" target="_blank" id="tomatoes-link">
+                        <button class="btn btn-large trivia-button">
+                            <img src="images/tomatoes_button.png">
+                        </button>
+                    </a>
+                    <a href="" target="_blank" id="netflix-link">
+                        <button class="btn btn-large trivia-button">
+                            <img src="images/netflix_button.jpg">
+                        </button>
+                    </a>
+                    <p>These will open in separate tabs or windows, to keep from interrupting the game.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

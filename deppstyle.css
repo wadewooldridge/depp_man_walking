@@ -1,0 +1,242 @@
+/* Basic stying for overall page. */
+body {
+    background-color: #777;
+}
+
+.punch {
+    font-weight: bold;
+}
+
+.panel-group {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+.panel {
+    border: 2px solid black;
+}
+
+.panel > .panel-heading {
+    background-color: black;
+    color: white;
+}
+
+#stats-panel {
+    margin-bottom: 1em;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+/* Styling for the marquee scrolling area at the top. */
+@font-face {
+    font-family: friday-night;
+    src: url('fonts/DJB_Friday_Night_Lights.ttf');
+}
+
+#marquee {
+    height: 4vw;
+    margin-bottom: 1em;
+    overflow: hidden;
+}
+
+#marquee-top, #marquee-bottom {
+    height: 20%;
+    background-size: auto 100%;
+    background-repeat: repeat-x;
+}
+
+#marquee-top {
+    background-image: url(images/topbar.gif);
+}
+
+#marquee-bottom {
+    background-image: url(images/bottombar.gif);
+}
+
+#marquee-top.hold, #marquee-bottom.hold {
+    background-image: url(images/offbar.gif);
+}
+
+#marquee-scroll {
+    position: relative;
+    height: 60%;
+    background-color: black;
+    overflow: hidden;
+}
+
+#marquee-text {
+    position: absolute;
+    margin: 0;
+    color: lightyellow;
+    font-family: friday-night;
+    font-size: 1.9vw;
+    text-transform: uppercase;
+    word-break: break-all;
+}
+
+/* Styling for the Statistics box. */
+.value {
+    position: absolute;
+    font-size: 150%;
+    right: 40%;
+}
+
+/* Styling for the Screening Room area. */
+#screening-room {
+    position: relative;
+    padding: 0;
+    background-color: black;
+    width: 100%;
+    height: 30vh;
+    overflow: hidden;
+}
+
+#video-iframe {
+    position: absolute;
+    width: 100%;
+    height: auto;
+}
+
+#curtains-div {
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    overflow: hidden;
+    transition: bottom 2s;
+}
+
+#curtains-div.raised{
+    bottom: 100%;
+}
+
+#curtains {
+    height: 100%;
+}
+
+/* Styling for the game area. */
+.card {
+    position: relative;
+    display: inline-block;
+    box-sizing: content-box;
+    height: 11.5vw;
+    width: 7vw;
+    border: 1px solid black;
+    border-radius: 6px;
+    margin: 0 3px;
+    overflow: hidden;
+}
+
+.card img {                 /* Applies to .front, .back, and .special */
+    position: absolute;
+    max-width: 96%;
+    border-radius: 3px;
+    left: 3px;
+}
+
+.front img {
+    top: 3px;
+    transition: opacity 2s;
+}
+
+.back img {
+    top: 3px;
+}
+
+.card-text {
+    position: absolute;
+    width: 100%;
+    font-size: 0.7vw;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0;
+    bottom: 0;
+    transition: bottom 2s;
+}
+
+.card-text.deferred {
+    bottom: -1.5em;
+    transition: 0s;
+}
+
+.matched {
+    opacity: 0.5;
+}
+
+/* The 'special' is overlaid on top of the card for bringing up special items such as badges. */
+.special {
+    height: 100%;
+    opacity: 0.0;
+    transition: 2.0s;
+}
+
+.special.revealed {
+    opacity: 1.0;
+    transition: 0s;
+}
+
+.special img {
+    bottom: 12.0em;
+}
+
+.special.revealed img {
+    bottom: 2em;
+    transition: 2.0s;
+}
+/* Animation when clicking on a card you shouldn't. */
+@keyframes shaking {
+    0% { transform:rotate(0deg); }
+    20% { transform:rotate(10deg); }
+    40% { transform:rotate(-10deg); }
+    60% { transform:rotate(10deg); }
+    80% { transform:rotate(-10deg); }
+    100% { transform:rotate(0deg); }
+}
+
+.shaky {
+    animation: shaking;
+    animation-duration: 1s;
+}
+
+/* Formatting for the Trivia Corner panel. */
+#trivia h2, #trivia h3 {
+    text-align: center;
+    margin: 8px 0 4px 0;
+}
+
+#trivia-basic img {
+    width: 40%;
+    float: right;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    margin-left: 2em;
+}
+
+hr {
+    clear: both;
+}
+
+#button-div p {
+    font-size: 67%;
+}
+
+.trivia-button {
+    width: 45%;
+    margin: 2px;
+}
+
+.trivia-button img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Formatting for the deppabout.html page. */
+h1 {
+    margin-left: 1em;
+}
+
+#about_program {
+    border: 1em;
+}
+

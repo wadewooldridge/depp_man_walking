@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Depp Man Walking - About the Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="deppstyle.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="col-xs-9 panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">Depp Man Walking</div>
+        <div class="panel-body">
+            <h2>Overview</h2>
+            <p>Depp Man Walking is an implementation of an image matching game implemented by Wade Wooldridge using the
+                following technologies:</p>
+            <ul>
+                <li><span class=punch>HTML</span>: for the basic page layout</li>
+                <li><span class=punch>CSS</span>: for styling and revealing the cards</li>
+                <li><span class=punch>Bootstrap</span>: for the basic page grid layout</li>
+                <li><span class=punch>JavaScript</span>: for program control and event handling</li>
+                <li><span class=punch>JQuery</span>: for dynamic creation of the page with random cards</li>
+                <li><span class=punch>YouTube iFrame</span>: for playing video clips for matched moves roles</li>
+            </ul>
+            <h2>Features</h2>
+            <p>Depp Man Walking includes the following features:</p>
+            <ul>
+                <li>21 different Johnny Depp roles to increase replayability (a random nine at a time).</li>
+                <li>An animated marquee that lights up and scrolls important messages "in lights".</li>
+                <li>A Trivia Corner section that gives information about each role when it is matched.</li>
+                <li>Links from the Trivia Corner to IMDB, Wikipedia, Rotten Tomatoes, and Netflix.  These start
+                as the generic links for Johnny Depp, and switch on each match to the role-specific links.</li>
+                <li>Budget and Box Office numbers that are revealed for each role when it is matched.</li>
+                <li>Special "badges" for several roles that display awards that have been won.</li>
+            </ul>
+            <h2>Program Notes</h2>
+            <p>These notes are for developers that want to follow the DOM or program flow.</p>
+            <p>The main JavaScript source is in deppscript.js, but the static data for the roles is held in
+            deppdata.js, which should be loaded first by the HTML.</p>
+            <p>The basic layout of each card is:</p>
+            <ul>
+                <li><span class=punch>.card</span> - Contains the overall card layout.
+                    <ul>
+                        <li><span class=punch>.front</span> - Contains the role-specific card front.
+                            <ul>
+                                <li><span class=punch>img</span> - Contains the role image.</li>
+                                <li><span class=punch>.card-text</span> - Scrolls up Budget and Box Office text.</li>
+                            </ul>
+                        </li>
+                        <li><span class=punch>.back</span> - Contains a general card back to hide the front until clicked.</li>
+                        <li><span class=punch>.special</span> - Contains a div for displaying badges and role-specific special
+                        animations.
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="panel-footer">
+            <input type="button" value="Close this window" onclick="self.close()">
+            <a href="deppmatch.html">Go to the game.</a>
+        </div>
+    </div>
+</div>
+<div class="col-xs-3">
+    <div class="panel panel-default">
+        <div class="panel-heading">by Wade Wooldridge</div>
+        <div class="panel-body">
+            <img src="images/headshot.jpg">
+        </div>
+        <div class="panel-footer"><a href="#">Continue to Wade's portofolio page.</a></div>
+    </div>
+</div>
+
+</body>
+</html>
